@@ -25,6 +25,9 @@ try:
     if not openai_api_key.startswith("sk-"):
         st.error("Invalid OpenAI API key format. The key should start with 'sk-'")
         st.stop()
+except KeyError:
+    st.error("OpenAI API key not found in secrets. Please add 'openai_api_key' to your Streamlit secrets.")
+
 
 Settings.llm = OpenAI(model="gpt-4o")
 Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small")
