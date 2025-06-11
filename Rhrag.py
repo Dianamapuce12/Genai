@@ -18,9 +18,13 @@ st.title("SuperRH RAG for you!")
 st.write("Gagnez plus de temp juste en demandant le metier souhaitée")
 
 
-openai_api_key = st.secrets["openai_api_key"]
+try:
+    openai_api_key = st.secrets["openai_api_key"]
     
-documents = SimpleDirectoryReader("cv").load_data() 
+    # Validate the API key format
+    if not openai_api_key.startswith("sk-"):
+        st.error("Invalid OpenAI API key format. The key should start with 'sk-'")
+        st.stop()
 
 Settings.llm = OpenAI(model="gpt-4o")
 Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small")
