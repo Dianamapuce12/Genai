@@ -18,7 +18,7 @@ st.title("SuperRH RAG for you!")
 st.write("Gagnez plus de temp juste en demandant le metier souhaitée")
 
 
-
+openai_api_key = st.secrets["openai_api_key"]
     
 documents = SimpleDirectoryReader("cv").load_data() 
 
