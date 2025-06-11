@@ -19,7 +19,6 @@ st.write("Gagnez plus de temp juste en demandant le metier souhaitée")
 
 
 
-os.environ["OPENAI_API_KEY"] = "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"
     
 documents = SimpleDirectoryReader("cv").load_data() 
 
