@@ -1,0 +1,23 @@
+# --- Base app ---
+streamlit>=1.34.0
+
+# --- LlamaIndex (anciennement GPT Index) ---
+llama-index>=0.10.38
+
+# --- LLM support (si tu utilises OpenAI ou autres) ---
+openai>=1.25.0
+
+# --- Lecture de fichiers locaux (pour SimpleDirectoryReader) ---
+beautifulsoup4
+tqdm
+pandas
+numpy
+
+# --- Optionnel : affichage plus joli ---
+streamlit-chat
+
+# --- Si tu utilises PyPDF pour lire des PDFs ---
+PyPDF2
+
+# --- Pour éviter certains bugs sur Streamlit Cloud ---
+nest_asyncio
