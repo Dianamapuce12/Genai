@@ -18,15 +18,6 @@ st.title("SuperRH RAG for you!")
 st.write("Gagnez plus de temp juste en demandant le metier souhaitée")
 
 
-try:
-    openai_api_key = st.secrets["openai_api_key"]
-    
-    # Validate the API key format
-    if not openai_api_key.startswith("sk-"):
-        st.error("Invalid OpenAI API key format. The key should start with 'sk-'")
-        st.stop()
-except KeyError:
-    st.error("OpenAI API key not found in secrets. Please add 'openai_api_key' to your Streamlit secrets.")
 
 documents = SimpleDirectoryReader('cv').load_data()
 
@@ -37,20 +28,7 @@ Settings.node_parser = SentenceSplitter(chunk_size=512, chunk_overlap=20)
 
 index = VectorStoreIndex.from_documents(documents)
 
-text_qa_template_str = (
-    """Tu es un assistant IA spécialisé dans l'analyse des cv. L'utilisateur envoie une question par rapport 'un metier. Ta tache est de chercher la reponse dans les cv fournis dans ta base de connaissance pour donner la liste des gens appropriés à ce metier.
-    Voilà le contexte :
-    {context}
 
-    Instruction :
-    1. 
-    2. Repond sous forme de liste et grand titre en gras.
-    2. Tu répond poliment et avec les nom des candidats lié à ce poste dans ta base de connaissance.
-    3. Pas de hallucination .
-
-    Question : {question}\n
-    Réponse : """
-)
 
 
 
